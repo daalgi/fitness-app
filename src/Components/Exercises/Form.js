@@ -47,7 +47,6 @@ export default ({ muscles, exercise, onSubmit }) => {
 
   const handleSubmit = () => {
     // Validation
-    //console.log(state);
     onSubmit({
       id: state.title.toLocaleLowerCase().replace(/ /g, "-"),
       ...state

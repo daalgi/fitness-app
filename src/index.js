@@ -1,9 +1,10 @@
 import React from "react";
 import { render } from "react-dom";
 
-import App from "./Components/App";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import { red, amber } from "@material-ui/core/colors";
+
+import App from "./Components/App";
 
 //console.log(amber);
 const theme = createMuiTheme({

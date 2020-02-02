@@ -9,8 +9,9 @@ import {
 import Add from "@material-ui/icons/Add";
 
 import Form from "./Form";
+import { withContext } from "../../context";
 
-export default ({ muscles, onSubmit }) => {
+const CreateDialog = props => {
   const [state, setState] = useState({
     open: false
   });
@@ -24,7 +25,7 @@ export default ({ muscles, onSubmit }) => {
 
   const handleFormSubmit = exercise => {
     handleToggle();
-    onSubmit(exercise);
+    props.onCreate(exercise);
   };
 
   return (
@@ -41,9 +42,11 @@ export default ({ muscles, onSubmit }) => {
         <DialogTitle>Create a New Exercise</DialogTitle>
         <DialogContent>
           <DialogContentText>Please fill out the form below.</DialogContentText>
-          <Form muscles={muscles} onSubmit={handleFormSubmit} />
+          <Form muscles={props.muscles} onSubmit={handleFormSubmit} />
         </DialogContent>
       </Dialog>
     </Fragment>
   );
 };
+
+export default withContext(CreateDialog);

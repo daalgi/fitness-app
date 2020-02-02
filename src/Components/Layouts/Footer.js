@@ -1,13 +1,17 @@
 import React from "react";
 import { AppBar, Tabs, Tab, withWidth } from "@material-ui/core";
 
-export default withWidth()(({ muscles, category, onSelect, width }) => {
+import { withContext } from "../../context";
+
+const Footer = props => {
+  const { category, muscles, width, onCategorySelect } = props;
+
   const index = category
     ? muscles.findIndex(group => group === category) + 1
     : 0;
 
   const onIndexSelect = (e, index) =>
-    onSelect(index === 0 ? "" : muscles[index - 1]);
+    onCategorySelect(index === 0 ? "" : muscles[index - 1]);
 
   return (
     <AppBar position="static">
@@ -16,14 +20,16 @@ export default withWidth()(({ muscles, category, onSelect, width }) => {
         onChange={onIndexSelect}
         indicatorColor="secondary"
         textColor="secondary"
-        centered={width !== "xs"}
-        variant={width === "xs" ? "scrollable" : "fullWidth"}
+        //centered={width == "xs"}
+        variant={width === "xs" ? "scrollable" : "standard"}
       >
         <Tab label="All" />
         {muscles.map(group => (
-          <Tab key={group} label={group} />
+          <Tab key={group} label={group} wrapped />
         ))}
       </Tabs>
     </AppBar>
   );
-});
+};
+
+export default withContext(withWidth()(Footer));

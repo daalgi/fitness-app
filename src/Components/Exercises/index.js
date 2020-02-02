@@ -38,41 +38,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({
-  exercise,
-  exercises,
-  muscles,
-  category,
-  onSelect,
-  onSelectEdit,
-  onDelete,
-  onEdit,
-  editMode
-}) => {
+export default () => {
   const theme = useTheme();
   const classes = useStyles(theme);
 
   return (
     <Grid container className={classes.container}>
       <Grid item className={classes.item} xs={12} sm={6}>
-        <LeftPane
-          classes={classes}
-          exercises={exercises}
-          muscles={muscles}
-          category={category}
-          onSelect={onSelect}
-          onSelectEdit={onSelectEdit}
-          onDelete={onDelete}
-        />
+        <LeftPane classes={classes} />
       </Grid>
       <Grid item className={classes.item} xs={12} sm={6}>
-        <RightPane
-          classes={classes}
-          exercise={exercise}
-          muscles={muscles}
-          onEdit={onEdit}
-          editMode={editMode}
-        />
+        <RightPane classes={classes} />
       </Grid>
     </Grid>
   );
