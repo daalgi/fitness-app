@@ -20,7 +20,7 @@ const Footer = props => {
         onChange={onIndexSelect}
         indicatorColor="secondary"
         textColor="secondary"
-        //centered={width == "xs"}
+        centered={width !== "xs"}
         variant={width === "xs" ? "scrollable" : "standard"}
       >
         <Tab label="All" />
