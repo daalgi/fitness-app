@@ -1,13 +1,10 @@
-//import '@babel/polyfill'
+import '@babel/polyfill'
 import React from "react";
 import { render } from "react-dom";
 
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import { red, amber } from "@material-ui/core/colors";
 
-import App from "./Components/App";
-
-//console.log(amber);
 const theme = createMuiTheme({
     palette: {
         primary: red,
@@ -21,9 +18,13 @@ const theme = createMuiTheme({
     spacing: 10
 });
 
-render(
-    <MuiThemeProvider theme={theme}>
-        <App />
-    </MuiThemeProvider>,
-    document.getElementById("root")
-)
+// Dynamic import (not efficient here though, just as an example)
+import(/* webpackChunkName: 'app' */ './Components/App')
+    .then(({ default: App }) =>
+        render(
+            <MuiThemeProvider theme={theme}>
+                <App />
+            </MuiThemeProvider>,
+            document.getElementById("root")
+        )
+    )
