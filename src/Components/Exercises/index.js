@@ -1,6 +1,6 @@
 import React from "react";
-import { Grid, makeStyles } from "@material-ui/core";
-import { useTheme } from "@material-ui/core/styles";
+import { Grid } from "@material-ui/core";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 import LeftPane from "./LeftPane";
 import RightPane from "./RightPane";

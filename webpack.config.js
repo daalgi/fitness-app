@@ -1,17 +1,13 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: __dirname + '/dist',
-        publicPath: '/dist/',
-        filename: 'main.js'
+        path: path.join(__dirname, 'dist'),
+        filename: '[name].[contenthash].js'
     },
     devtool: 'cheap-module-source-map',
-    devServer: {
-        contentBase: './',
-        publicPath: '/dist/'
-    },
     module: {
         rules: [
             {
@@ -20,6 +16,11 @@ module.exports = {
                 use: ['babel-loader']
             }
         ]
+    },
+    resolve: {
+        alias: {
+            '@material-ui/core': '@material-ui/core/es'
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({

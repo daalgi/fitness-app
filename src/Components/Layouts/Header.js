@@ -1,5 +1,7 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, makeStyles } from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
 import CreateDialog from "../Exercises/Dialog";
 
 const useStyles = makeStyles({
